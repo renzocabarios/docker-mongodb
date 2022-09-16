@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mongodb:
+    # WHAT IMAGE
+    image: mongo
+    # Expose DOCKER MONGODB PORT to LOCAL COMPUTER
+    ports:
+      - $LOCAL_MONGODB_PORT:$DOCKER_MONGODB_PORT
+    # WHERE TO PERSIST
+    volumes:
+      - db:/data/db
+    # SETUP DEFAULT MONGODB PORT INSIDE DOCKER
+    command: mongod --port $DOCKER_MONGODB_PORT
+
+# WHERE TO PERSIST INSIDE DOCKER
+volumes:
+  db:
